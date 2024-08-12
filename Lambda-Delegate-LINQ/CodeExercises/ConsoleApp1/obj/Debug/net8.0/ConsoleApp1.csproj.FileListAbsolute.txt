@@ -1,0 +1,5 @@
+C:\Obsidian\Prosperi\CSharp\Lambda-Delegate-LINQ\CodeExercises\ConsoleApp1\obj\Debug\net8.0\ConsoleApp1.GeneratedMSBuildEditorConfig.editorconfig
+C:\Obsidian\Prosperi\CSharp\Lambda-Delegate-LINQ\CodeExercises\ConsoleApp1\obj\Debug\net8.0\ConsoleApp1.AssemblyInfoInputs.cache
+C:\Obsidian\Prosperi\CSharp\Lambda-Delegate-LINQ\CodeExercises\ConsoleApp1\obj\Debug\net8.0\ConsoleApp1.AssemblyInfo.cs
+C:\Obsidian\Prosperi\CSharp\Lambda-Delegate-LINQ\CodeExercises\ConsoleApp1\obj\Debug\net8.0\ConsoleApp1.csproj.CoreCompileInputs.cache
+C:\Obsidian\Prosperi\CSharp\Lambda-Delegate-LINQ\CodeExercises\ConsoleApp1\obj\Debug\net8.0\ConsoleApp1.sourcelink.json
