@@ -13,15 +13,6 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            //double a = 10;
-            //double b = 12;
-
-            //BinaryNumericOperation op = CalculationService.ShowSum;
-
-            ////double result = op.Invoke(a, b);
-            //op += CalculationService.ShowMax;
-            //op(a, b);
-
             List<Product> list = new List<Product>();
 
             list.Add(new Product("Tv", 900.00));
@@ -29,18 +20,30 @@ namespace ConsoleApp1
             list.Add(new Product("Tablet", 350.50));
             list.Add(new Product("HD Case", 80.90));
 
-            list.RemoveAll(ProductTest);
-            //list.RemoveAll(p => p.Price >= 100.0);
+            // Adiciona 10% a cada produto da lista
+            list.ForEach(UpdatePrice);
+
+            // Printa produtos 
+            foreach (Product p in list)
+            {
+                Console.WriteLine(p);
+            }
+             
+            // Variable to reference method - Alternative sintax
+            Action<Product> act = UpdatePrice;
+
+            list.ForEach(act);
+
             foreach (Product p in list)
             {
                 Console.WriteLine(p);
             }
 
-
         }
-        public static bool ProductTest(Product p)
+
+        static void UpdatePrice(Product p)
         {
-            return p.Price >= 100.0;
+             p.Price += p.Price * 0.1;
         }
     }
 }

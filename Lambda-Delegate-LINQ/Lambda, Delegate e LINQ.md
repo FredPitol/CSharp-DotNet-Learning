@@ -612,9 +612,11 @@ list.Add(new Product("HD Case", 80.90))
 - Resolução 
 	- https://github.com/acenelio/lambda2-csharp
 - **Commit da implementação**
-	- https://github.com/FredPitol/CSharp-DotNet-Learning/tree/d117025c786b0bc131127de5485f9abcceb1e075/Lambda-Delegate-LINQ
+	- 5d606c864707fadc3d37f4f6e2bfe9d00ec858fc
+	- https://github.com/FredPitol/CSharp-DotNet-Learning/tree/5d606c864707fadc3d37f4f6e2bfe9d00ec858fc
 ## Action (exemplo com ForEach)
 
+- Representa uma ação
 ### Action (System)
 > Representa um método void que recebe zero ou mais argumentos
 
@@ -629,6 +631,7 @@ public delegate void Action<in T1, in T2, in T3>(T1 arg1, T2 arg2, T3 arg3);
 ```
 > 16 sobrecargas
 
+
 ### Problemas exemplo
 
 Fazer um programa que, a partir de uma lista de produtos, aumente o preço dos produtos em 10%
@@ -640,9 +643,13 @@ list.Add(new Product("Mouse", 50.00));
 list.Add(new Product("Tablet", 350.50));
 ```
 
+#### Considerações sobre implementação
+ 
+
 - Resolução 
 	- https://github.com/acenelio/lambda3-csharp
-
+- **Commit da implementação**
+	- 
 ## Func (exemplo com Select)
 
 
