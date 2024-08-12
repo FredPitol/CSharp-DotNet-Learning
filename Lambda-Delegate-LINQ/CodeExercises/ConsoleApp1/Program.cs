@@ -20,30 +20,19 @@ namespace ConsoleApp1
             list.Add(new Product("Tablet", 350.50));
             list.Add(new Product("HD Case", 80.90));
 
-            // Adiciona 10% a cada produto da lista
-            list.ForEach(UpdatePrice);
 
-            // Printa produtos 
-            foreach (Product p in list)
-            {
-                Console.WriteLine(p);
-            }
-             
-            // Variable to reference method - Alternative sintax
-            Action<Product> act = UpdatePrice;
+            //Action<Product> act = p => { p.Price += p.Price * 0.1; };
 
-            list.ForEach(act);
+            //list.ForEach(act);
+
+            // lambda Inline
+            list.ForEach(p => { p.Price += p.Price * 0.1; });
 
             foreach (Product p in list)
             {
                 Console.WriteLine(p);
             }
 
-        }
-
-        static void UpdatePrice(Product p)
-        {
-             p.Price += p.Price * 0.1;
         }
     }
 }

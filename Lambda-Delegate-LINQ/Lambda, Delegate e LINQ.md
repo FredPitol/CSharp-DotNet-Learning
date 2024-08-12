@@ -614,6 +614,7 @@ list.Add(new Product("HD Case", 80.90))
 - **Commit da implementação**
 	- 5d606c864707fadc3d37f4f6e2bfe9d00ec858fc
 	- https://github.com/FredPitol/CSharp-DotNet-Learning/tree/5d606c864707fadc3d37f4f6e2bfe9d00ec858fc
+	- 
 ## Action (exemplo com ForEach)
 
 - Representa uma ação
@@ -649,7 +650,14 @@ list.Add(new Product("Tablet", 350.50));
 - Resolução 
 	- https://github.com/acenelio/lambda3-csharp
 - **Commit da implementação**
+	- Variavel com metodo de referência e metodos de referência
+	- https://github.com/FredPitol/CSharp-DotNet-Learning/commit/b40b0d63c25ed3669fe68a7c4b25273ca2e73f66
+	- Lambda inline
 	- 
+
+```
+list.ForEach(p => { p.Price += p.Price * 0.1; });
+```
 ## Func (exemplo com Select)
 
 
@@ -664,6 +672,7 @@ public delegate TResult Func<in T, out TResult>(T obj);
 public delegate TResult Func<in T1, in T2, out TResult>(T1 arg1, T2 arg2);
 public delegate TResult Func<in T1, in T2, in T3, out TResult>(T1 arg1, T2
 arg2, T3 arg3)
+(...)
 ```
 > (16 sobrecargas)
 
@@ -681,6 +690,7 @@ list.Add(new Product("HD Case", 80.90));
 ```
 - Resolução
 	- https://github.com/acenelio/lambda4-csharp
+- 
 
 ### Nota sobre a função Select
 
