@@ -528,7 +528,8 @@ namespace Course
 > Adaptando implementação anterior para multicast
 
 - **Commit da implementação**
-- https://github.com/FredPitol/CSharp-DotNet-Learning/tree/d117025c786b0bc131127de5485f9abcceb1e075/Lambda-Delegate-LINQ
+	- https://github.com/FredPitol/CSharp-DotNet-Learning/tree/d117025c786b0bc131127de5485f9abcceb1e075/Lambda-Delegate-LINQ
+
 
 #### Classe Calculadora
 ```csharp
@@ -553,7 +554,7 @@ namespace Course.Services
 ```
 
 
-
+#### Main 
 ```csharp
 using System;
 using Course.Services;
@@ -582,16 +583,19 @@ namespace Course
 - `BinaryNumericOperation op = CalculationService.ShowSum;`
 	- Guarda referência para duas funções 
 - `double result = op.Invoke(a, b);`
-## Predicate (exemplo com RemoveAll)
+## Delegate Predicate (exemplo com RemoveAll)
 
 ### Predicate (System)
 > Representa um método que recebe um objeto do tipo T e retorna um valor booleano
 
 https://msdn.microsoft.com/en-us/library/bfcke1bz%28v=vs.110%29.aspx
 
+#### Exemplo
+
 ```csharp
 public delegate bool Predicate<in T>(T obj)
 ```
+- 
 
 #### Problemas Exemplo
 
@@ -607,7 +611,8 @@ list.Add(new Product("HD Case", 80.90))
 
 - Resolução 
 	- https://github.com/acenelio/lambda2-csharp
-
+- **Commit da implementação**
+	- https://github.com/FredPitol/CSharp-DotNet-Learning/tree/d117025c786b0bc131127de5485f9abcceb1e075/Lambda-Delegate-LINQ
 ## Action (exemplo com ForEach)
 
 ### Action (System)
