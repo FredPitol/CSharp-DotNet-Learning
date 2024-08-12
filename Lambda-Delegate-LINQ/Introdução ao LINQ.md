@@ -113,4 +113,6 @@ foreach (int x in result)
 • GroupBy
 
 
+# Próximo tema
+
 [Algebra relacional e SQL](Algebra%20relacional%20e%20SQL.md)

@@ -1,13 +1,16 @@
-# `Comparison<T>`
+# Tipo `Comparison<T>`
 
 ## Problema
-
+> Vamos explorar diferentes abordagens para sua resolução
 
 - Suponha uma classe Product com os atributos name e price.
 - Suponha que precisamos ordenar uma lista de objetos Product.
 - Podemos implementar a comparação de produtos por meio da implementação da interface `IComparable<Product>`
 - Entretanto, desta forma nossa classe Product não fica fechada para alteração: se o critério de comparação mudar, precisaremos alterar a classe Product.
+	- Caso queira ordenar por outro critério de comporação se torna necessário trocar o comportamento da classe
 - Podemos então usar outra sobrecarga do método "Sort" da classe List:
+
+
 
 ```csharp
 public void Sort(Comparison<T> comparison)
@@ -18,19 +21,267 @@ public void Sort(Comparison<T> comparison)
 ```csharp
 public delegate int Comparison<in T>(T x, T y);
 ```
+- `Comparison
+	- Tipo genérico 
+- `<in T>`
+	- Do tipo T
+- `(T x, T y)`
+	- Que recebe dois objetos 
+- `int`
+	- E retorna um inteiro
+
+### Declarando antes 
+
+```csharp
+Comparison<Product> comp = CompareProducts;
+
+list.Sort(comp);
+```
+
+- `Comparison<Product> comp = CompareProducts;`
+	- Var que recebe referência para função
+- `list.Sort(comp);`
+	- Passando referência para função sort
+
+### Expressão lambda atribuída a uma variável tipo delegate
+
+- Não necessita da declaração da função na classe
+
+```csharp
+Comparison<Product> comp = (p1,p2) => p1.Name.ToUpper().CompareTo(p2.Name.ToUpper());
+```
+
+- `Comparison<Product> comp = (p1,p2)`
+	- Compara dois objetos 
+- `p1.Name.ToUpper().CompareTo(p2.Name.ToUpper());`
+	- Retorno
+
+### Função lambda dentro do argumento da função sort
+>Expressão lambda inline
+
+```csharp
+list.Sort((p1,p2) => p1.Name.ToUpper().CompareTo(p2.Name.ToUpper()));
+```
 
 ## Conclusão
 ```csharp
 public void Sort(Comparison<T> comparison)
 ```
 
-- Referência simples de método como parâmetro
-- Referência de método atribuído a uma variável tipo delegate
-- Expressão lambda atribuída a uma variável tipo delegate
-- Expressão lambda inline
+## Implementações
+### Referência simples de método como parâmetro
+#### Product
+```csharp
+using System;
+using System.Globalization;
+
+namespace Course.Entities {
+    class Product : IComparable<Product> {
+
+        public string Name { get; set; }
+        public double Price { get; set; }
+
+        public Product(string name, double price) {
+            Name = name;
+            Price = price;
+        }
+
+        public override string ToString() {
+            return Name + ", " + Price.ToString("F2", CultureInfo.InvariantCulture);
+        }
+
+        public int CompareTo(Product other) {
+            return Name.ToUpper().CompareTo(other.Name.ToUpper());
+        }
+    }
+}
+```
+
+#### Main
+
+```csharp
+using System;
+using System.Collections.Generic;
+using Course.Entities;
+
+namespace Course {
+    class Program {
+        static void Main(string[] args) {
+
+            List<Product> list = new List<Product>();
+
+            list.Add(new Product("TV", 900.00));
+            list.Add(new Product("Notebook", 1200.00));
+            list.Add(new Product("Tablet", 450.00));
+
+            list.Sort();
+
+            foreach (Product p in list) {
+                Console.WriteLine(p);
+            }
+        }
+    }
+}
+```
+
+
+### Referência de método atribuído a uma variável tipo delegate
+#### main
+```csharp
+﻿using System;
+using System.Collections.Generic;
+using Course.Entities;
+
+namespace Course {
+    class Program {
+        static void Main(string[] args) {
+
+            List<Product> list = new List<Product>();
+
+            list.Add(new Product("TV", 900.00));
+            list.Add(new Product("Notebook", 1200.00));
+            list.Add(new Product("Tablet", 450.00));
+
+            list.Sort(CompareProducts);
+
+            foreach (Product p in list) {
+                Console.WriteLine(p);
+            }
+        }
+
+        static int CompareProducts(Product p1, Product p2) {
+            return p1.Name.ToUpper().CompareTo(p2.Name.ToUpper());
+        }
+    }
+}
+```
+
+#### Product
+```csharp
+﻿using System.Globalization;
+
+namespace Course.Entities {
+    class Product {
+
+        public string Name { get; set; }
+        public double Price { get; set; }
+
+        public Product(string name, double price) {
+            Name = name;
+            Price = price;
+        }
+
+        public override string ToString() {
+            return Name + ", " + Price.ToString("F2", CultureInfo.InvariantCulture);
+        }
+    }
+}
+```
+
+### Expressão lambda atribuída a uma variável tipo delegate
+
+#### Main
+```csharp
+﻿using System;
+using System.Collections.Generic;
+using Course.Entities;
+
+namespace Course {
+    class Program {
+        static void Main(string[] args) {
+
+            List<Product> list = new List<Product>();
+
+            list.Add(new Product("TV", 900.00));
+            list.Add(new Product("Notebook", 1200.00));
+            list.Add(new Product("Tablet", 450.00));
+
+            Comparison<Product> comp = (p1, p2) => p1.Name.ToUpper().CompareTo(p2.Name.ToUpper());
+
+            list.Sort(comp);
+
+            foreach (Product p in list) {
+                Console.WriteLine(p);
+            }
+        }
+    }
+}
+```
+
+#### Product
+
+```csharp
+﻿using System.Globalization;
+
+namespace Course.Entities {
+    class Product {
+
+        public string Name { get; set; }
+        public double Price { get; set; }
+
+        public Product(string name, double price) {
+            Name = name;
+            Price = price;
+        }
+
+        public override string ToString() {
+            return Name + ", " + Price.ToString("F2", CultureInfo.InvariantCulture);
+        }
+    }
+}
+```
+
+### Expressão lambda inline
+> Solução menos verbosa 
+#### Classe 
+```csharp
+﻿using System.Globalization;
+
+namespace Course.Entities {
+    class Product {
+
+        public string Name { get; set; }
+        public double Price { get; set; }
+
+        public Product(string name, double price) {
+            Name = name;
+            Price = price;
+        }
+
+        public override string ToString() {
+            return Name + ", " + Price.ToString("F2", CultureInfo.InvariantCulture);
+        }
+    }
+}
+```
+
+#### Main
+```csharp
+﻿using System;
+using System.Collections.Generic;
+using Course.Entities;
+
+namespace Course {
+    class Program {
+        static void Main(string[] args) {
+
+            List<Product> list = new List<Product>();
+
+            list.Add(new Product("TV", 900.00));
+            list.Add(new Product("Notebook", 1200.00));
+            list.Add(new Product("Tablet", 450.00));
+
+            list.Sort((p1, p2) => p1.Name.ToUpper().CompareTo(p2.Name.ToUpper()));
+
+            foreach (Product p in list) {
+                Console.WriteLine(p);
+            }
+        }
+    }
+}
+```
 
 # Programação funcional e cálculo lambda
-
 ## Paradigmas de programação
 
 - Imperativo (C, Pascal, Fortran, Cobol)
@@ -39,15 +290,24 @@ public void Sort(Comparison<T> comparison)
 - Lógico (Prolog)
 - Multiparadigma (JavaScript, Java (8+), C# (3+), Ruby, Python, Go)
 
+> C# aplica funcional e orientando a objetos se tornando multiparadigma
 ## Paradigma funcional de programação
 > Baseado no formalismo matemático Cálculo Lambda (Church 1930)
 
 ![](attachments/Pasted%20image%2020240812141142.png)
+- Funcional
+	- Descreve o que vai ser computado por meio de expressões, sendo declarativa
+- Imperativa
+	- Define comandos a serem executados
 
-## Transparência referencial
->Uma função possui transparência referencial se seu resultado for sempre o mesmo para os mesmos dados de entrada. 
+### Transparência referencial
+> A função depende apenas de argumento que estão presentes nela mesma 
 
-Benefícios: simplicidade e previsibilidade
+- Uma função possui transparência referencial se seu resultado for sempre o mesmo para os mesmos dados de entrada. 
+- Benefícios: 
+	- Simplicidade  
+	- Previsibilidade
+	- Torna mais fácil de entender a função
 
 ```csharp
 using System;
@@ -75,12 +335,18 @@ namespace Course
     }
 }
 ```
-> Exemplo de função que não é referencialmente transparent
+> Exemplo de função que não é referencialmente transparente
 
-## Funções são objetos de primeira ordem (ou primeira classe
+- Algoritmo 
+	- Recebe um vetor 
+	- Se o elemento do vetor na posição i for impar 
+	- Atribuo a ele o que ele tinha dentro dele += valor global
+		- Estamos operando com um valor fora da função o que a torna referencialmente não transparente
+			- Essa característica é mais forte na programação funcional
 
-sso significa que funções podem, por exemplo, serem passadas como parâmetros de
-métodos, bem como retornadas como resultado de métodos
+
+### Funções são objetos de primeira ordem (ou primeira classe)
+> Isso significa que funções podem, por exemplo, serem passadas como parâmetros de métodos, bem como retornadas como resultado de métodos
 
 ```csharp
 class Program
@@ -101,7 +367,9 @@ class Program
 }
 ```
 
-## Inferência de tipos
+### Inferência de tipos
+> Não é necessário a declaração do tipo da variável
+
 
 ```csharp
 list.Add(new Product("TV", 900.00));
@@ -113,8 +381,10 @@ foreach (Product p in list)
 	Console.WriteLine(p);
     }
 ```
+- `list.Sort((p1, p2) `
+	- Compilador infere o tipo da variável 
 
-## Expressividade / "como" vs. "o quê"
+### Expressividade / "como" vs. "o quê"
 
 ```csharp
 int sum = 0;
@@ -125,13 +395,13 @@ foreach (int x in list)
 
 ```
 
-### VS
+ VS
 
 ```csharp
 int sum = list.Aggregate(0, (x, y) => x + y);
 ```
 
-## O que são expressões lambda ? 
+### O que são expressões lambda ? 
 > Em programação funcional, expressão lambda corresponde a uma função anônima de primeira classe.
 
 ```csharp
@@ -150,7 +420,7 @@ class Program
 (...)
 ```
 
-## Conclusões 
+### Conclusões 
 
 ![](attachments/Pasted%20image%2020240812142315.png)
 
@@ -166,14 +436,18 @@ class Program
 - Usos comuns:
 	- Comunicação entre objetos de forma flexível e extensível (eventos / callbacks)
 	- Parametrização de operações por métodos (programação funcional)
+		- Posso passar uma função como parâmetro de outra função
+			- Esse parâmetro sera do tipo delegate 
 
 ## Delegates pré-definidos
 
-- Action
-- Func
-- Predicate
+- **Action**
+- **Func**
+- **Predicate**
 
-### Demo1 
+### Implentação
+
+#### Classe Calculadora
 ```csharp
 namespace Course.Services
 {
@@ -195,22 +469,30 @@ namespace Course.Services
 }
 ```
 
-### Demo
+- `Max`
+	- Retorna maior
+- `Sum`
+	- Retorna soma
+- `square`
+	- Retorna numero ao quadrado
+
+#### Main
 ```csharp
 using System;
 using Course.Services;
 
 namespace Course
 {
-    delegate double BinaryNumericOperation(double n1, double n2);
+    delegate double BinaryNumericOperation(double n1, double n2); // Declara delegate
     class Program
     {
         static void Main(string[] args)
         {
+	        
             double a = 10;
             double b = 12;
-            // BinaryNumericOperation op = CalculationService.Sum;
-            BinaryNumericOperation op = new BinaryNumericOperation(CalculationService.Sum);
+            BinaryNumericOperation op = CalculationService.Sum;
+            // BinaryNumericOperation op = new BinaryNumericOperation(CalculationService.Sum); 
             // double result = op(a, b);
             double result = op.Invoke(a, b);
             Console.WriteLine(result);
@@ -219,15 +501,33 @@ namespace Course
 }
 ```
 
+- `delegate double BinaryNumericOperation(double n1, double n2);`
+	- Referência para função que recebe dois doubles
+	- TypeSafety 
+		- A função fica restrita a receber dois doubles e retornar um double
+			- A função square por exemplo é incompatível, pois só tem um argumento
+- **Sintaxes**
+	- Estanciando
+		- `BinaryNumericOperation op = new BinaryNumericOperation(CalculationService.Sum);`
+			- Verbosa 
+		- `BinaryNumericOperation op = CalculationService.Sum;`
+			- Simples
+	- Chamando função
+		- `double result = op(a, b);`
+			- Simples
+		- `double result = op.Invoke(a, b);`
+			- Verbosa
 ## Multicast delegates
 
-• Delegates que guardam a referência para mais de um método
-• Para adicionar uma referência, pode-se usar o operador +=
-• A chamada Invoke (ou sintaxe reduzida) executa todos os métodos na ordem em que foram adicionados
-• Seu uso faz sentido para métodos void
+- Delegates que guardam a referência para mais de um método
+- Para adicionar uma referência, pode-se usar o operador +=
+- A chamada Invoke (ou sintaxe reduzida) executa todos os métodos na ordem em que foram adicionados
+	- O que faz seu uso fazer sentido para métodos void
 
-### Demo
+### Implementação
+> Adaptando implementação anterior para multicast
 
+#### Classe Calculadora
 ```csharp
 using System;
 namespace Course.Services
@@ -239,7 +539,7 @@ namespace Course.Services
             double max = (x > y) ? x : y;
             Console.WriteLine(max);
         }
-        public static void ShowSum(double x, double y)
+        public static void ShowSum(double x, double y) 
         {
             double sum = x + y;
             Console.WriteLine(sum);
@@ -248,6 +548,8 @@ namespace Course.Services
 	
 }
 ```
+
+
 
 ```csharp
 using System;
@@ -261,7 +563,10 @@ namespace Course
         {
             double a = 10;
             double b = 12;
+            
             BinaryNumericOperation op = CalculationService.ShowSum;
+            
+	        //double result = op.Invoke(a, b);
             op += CalculationService.ShowMax;
             op(a, b);
         }
@@ -269,6 +574,11 @@ namespace Course
 }
 ```
 
+- `delegate void BinaryNumericOperation(double n1, double n2);`
+	- Transformamos a função em void
+- `BinaryNumericOperation op = CalculationService.ShowSum;`
+	- Guarda referência para duas funções 
+- `double result = op.Invoke(a, b);`
 ## Predicate (exemplo com RemoveAll)
 
 ### Predicate (System)
@@ -392,33 +702,6 @@ list.Add(new Product("HD Case", 80.90))
 - Resolução
 	- https://github.com/acenelio/lambda5-csharp
 
-```csharp
+# Próximo tema
 
-```
-
-```csharp
-
-```
-
-```csharp
-
-```
-
-```csharp
-
-```
-
-```csharp
-
-```
-
-```csharp
-
-```
-
-```csharp
-
-```
-
-
-
+[Introdução ao LINQ](Introdução%20ao%20LINQ.md)
