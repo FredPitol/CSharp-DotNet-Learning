@@ -653,11 +653,13 @@ list.Add(new Product("Tablet", 350.50));
 	- Variavel com metodo de referência e metodos de referência
 	- https://github.com/FredPitol/CSharp-DotNet-Learning/commit/b40b0d63c25ed3669fe68a7c4b25273ca2e73f66
 	- Lambda inline
-	- 
+	- https://github.com/FredPitol/CSharp-DotNet-Learning/commit/5a4b8343384f4cc65b8f42da854f9d1644ed58d3
 
-```
+```csharp
 list.ForEach(p => { p.Price += p.Price * 0.1; });
 ```
+
+# PONTO DE PARADA -> link commit ainda não subiu
 ## Func (exemplo com Select)
 
 
