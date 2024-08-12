@@ -1,5 +1,3 @@
+# Image test 
 
-![[Pasted image 20240812134919.png]]
-![[Pasted image 20240812134928.png]]
-
-Testing Images
+![[Pasted image 20240812135726.png]]
