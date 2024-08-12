@@ -527,6 +527,9 @@ namespace Course
 ### Implementação
 > Adaptando implementação anterior para multicast
 
+- **Commit da implementação**
+- https://github.com/FredPitol/CSharp-DotNet-Learning/tree/d117025c786b0bc131127de5485f9abcceb1e075/Lambda-Delegate-LINQ
+
 #### Classe Calculadora
 ```csharp
 using System;
