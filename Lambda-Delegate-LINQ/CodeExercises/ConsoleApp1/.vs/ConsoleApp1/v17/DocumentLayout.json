@@ -7,12 +7,12 @@
       "RelativeMoniker": "D:0:0:{BA8361D6-9CCF-487E-87A5-C5BC02E594DA}|ConsoleApp1.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BA8361D6-9CCF-487E-87A5-C5BC02E594DA}|ConsoleApp1.csproj|c:\\obsidian\\prosperi\\csharp\\lambda-delegate-linq\\codeexercises\\consoleapp1\\entities\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BA8361D6-9CCF-487E-87A5-C5BC02E594DA}|ConsoleApp1.csproj|solutionrelative:entities\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{BA8361D6-9CCF-487E-87A5-C5BC02E594DA}|ConsoleApp1.csproj|c:\\obsidian\\prosperi\\csharp\\lambda-delegate-linq\\codeexercises\\consoleapp1\\entities\\binarynumericoperation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BA8361D6-9CCF-487E-87A5-C5BC02E594DA}|ConsoleApp1.csproj|solutionrelative:entities\\binarynumericoperation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BA8361D6-9CCF-487E-87A5-C5BC02E594DA}|ConsoleApp1.csproj|c:\\obsidian\\prosperi\\csharp\\lambda-delegate-linq\\codeexercises\\consoleapp1\\entities\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BA8361D6-9CCF-487E-87A5-C5BC02E594DA}|ConsoleApp1.csproj|solutionrelative:entities\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{BA8361D6-9CCF-487E-87A5-C5BC02E594DA}|ConsoleApp1.csproj|c:\\obsidian\\prosperi\\csharp\\lambda-delegate-linq\\codeexercises\\consoleapp1\\consoleapp1.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
@@ -30,11 +30,11 @@
           "Children": [
             {
               "$type": "Bookmark",
-              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+              "Name": "ST:1:0:{e8034f19-ab72-4f06-83fd-f6832b41aa63}"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "Product.cs",
               "DocumentMoniker": "C:\\Obsidian\\Prosperi\\CSharp\\Lambda-Delegate-LINQ\\CodeExercises\\ConsoleApp1\\Entities\\Product.cs",
               "RelativeDocumentMoniker": "Entities\\Product.cs",
@@ -42,11 +42,12 @@
               "RelativeToolTip": "Entities\\Product.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAeAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-12T20:03:53.667Z"
+              "WhenOpened": "2024-08-12T20:03:53.667Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "BinaryNumericOperation.cs",
               "DocumentMoniker": "C:\\Obsidian\\Prosperi\\CSharp\\Lambda-Delegate-LINQ\\CodeExercises\\ConsoleApp1\\Entities\\BinaryNumericOperation.cs",
               "RelativeDocumentMoniker": "Entities\\BinaryNumericOperation.cs",
@@ -54,7 +55,8 @@
               "RelativeToolTip": "Entities\\BinaryNumericOperation.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-12T19:40:00.212Z"
+              "WhenOpened": "2024-08-12T19:40:00.212Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -76,10 +78,14 @@
               "RelativeDocumentMoniker": "Program.cs",
               "ToolTip": "C:\\Obsidian\\Prosperi\\CSharp\\Lambda-Delegate-LINQ\\CodeExercises\\ConsoleApp1\\Program.cs",
               "RelativeToolTip": "Program.cs",
-              "ViewState": "AQIAAAcAAAAAAAAAAAAgwBwAAAA0AAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACYAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-12T17:15:14.848Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
             }
           ]
         }
