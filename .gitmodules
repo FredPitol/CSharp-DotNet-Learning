@@ -1,0 +1,3 @@
+[submodule "Projeto-Web/Projeto-Web/workshop-asp-net-core-mvc"]
+	path = Projeto-Web/Projeto-Web/workshop-asp-net-core-mvc
+	url = git@github.com:FredPitol/workshop-asp-net-core-mvc.git
